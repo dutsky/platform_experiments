@@ -3,14 +3,15 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:platform_experiments/platform_experiments_method_channel.dart';
 
 void main() {
-  MethodChannelPlatformExperiments platform = MethodChannelPlatformExperiments();
+  MethodChannelPlatformExperiments platform =
+      MethodChannelPlatformExperiments();
   const MethodChannel channel = MethodChannel('platform_experiments');
 
   TestWidgetsFlutterBinding.ensureInitialized();
 
   setUp(() {
     channel.setMockMethodCallHandler((MethodCall methodCall) async {
-      return '42';
+      return 6;
     });
   });
 
@@ -19,6 +20,6 @@ void main() {
   });
 
   test('getPlatformVersion', () async {
-    expect(await platform.getPlatformVersion(), '42');
+    expect(await platform.multilpy(2, 3), 6);
   });
 }

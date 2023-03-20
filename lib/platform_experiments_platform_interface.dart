@@ -8,7 +8,8 @@ abstract class PlatformExperimentsPlatform extends PlatformInterface {
 
   static final Object _token = Object();
 
-  static PlatformExperimentsPlatform _instance = MethodChannelPlatformExperiments();
+  static PlatformExperimentsPlatform _instance =
+      MethodChannelPlatformExperiments();
 
   /// The default instance of [PlatformExperimentsPlatform] to use.
   ///
@@ -23,7 +24,19 @@ abstract class PlatformExperimentsPlatform extends PlatformInterface {
     _instance = instance;
   }
 
-  Future<String?> getPlatformVersion() {
-    throw UnimplementedError('platformVersion() has not been implemented.');
+  Future<int?> multilpy(int first, int second) {
+    throw UnimplementedError('multiply() has not been implemented.');
+  }
+
+  Future<double?> divide(int first, int second) {
+    throw UnimplementedError('divide() has not been implemented.');
+  }
+
+  Future<int?> add(int first, int second) {
+    throw UnimplementedError('add() has not been implemented.');
+  }
+
+  Future<int?> subtract(int first, int second) {
+    throw UnimplementedError('subtract() has not been implemented.');
   }
 }
