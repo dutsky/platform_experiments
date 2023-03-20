@@ -10,8 +10,22 @@ class MethodChannelPlatformExperiments extends PlatformExperimentsPlatform {
   final methodChannel = const MethodChannel('platform_experiments');
 
   @override
-  Future<String?> getPlatformVersion() async {
-    final version = await methodChannel.invokeMethod<String>('getPlatformVersion');
-    return version;
+  Future<int?> multilpy(int first, int second) {
+    return methodChannel.invokeMethod<int>('multiply', [first, second]);
+  }
+
+  @override
+  Future<double?> divide(int first, int second) {
+    return methodChannel.invokeMethod<double>('divide', [first, second]);
+  }
+
+  @override
+  Future<int?> add(int first, int second) {
+    return methodChannel.invokeMethod<int>('add', [first, second]);
+  }
+
+  @override
+  Future<int?> subtract(int first, int second) {
+    return methodChannel.invokeMethod<int>('subtract', [first, second]);
   }
 }
