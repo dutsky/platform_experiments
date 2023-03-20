@@ -23,7 +23,7 @@ class PlatformExperimentsPlugin : FlutterPlugin, MethodCallHandler {
     }
 
     override fun onMethodCall(call: MethodCall, result: Result) {
-        val args = call.arguments() as IntArray?
+        val args = call.arguments() as ArrayList<Int>?
         val first = args?.get(0)
         val second = args?.get(1)
 
