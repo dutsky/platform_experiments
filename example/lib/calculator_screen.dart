@@ -85,7 +85,7 @@ class _CalculatorScreenState extends State<CalculatorScreen> {
     final result =
         await operation?.call(Operands(first: first, second: second));
     if (result == null) return;
-    resultController.text = result.toString();
+    resultController.text = result.result.toString();
   }
 
   Future<void> _onMultiply() async => _do(plugin?.multiply);
@@ -95,7 +95,7 @@ class _CalculatorScreenState extends State<CalculatorScreen> {
     final second = int.parse(secondNumberController.text);
     final result = await plugin?.divide(Operands(first: first, second: second));
     if (result == null) return;
-    resultController.text = result.toString();
+    resultController.text = result.result.toString();
   }
 
   Future<void> _onAdd() async => _do(plugin?.add);
