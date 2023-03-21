@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:platform_experiments/platform_experiments.dart';
+import 'package:platform_experiments/pigeon.dart';
 import 'package:platform_experiments_example/platform_experiments_widget.dart';
 
 class CalculatorScreen extends StatefulWidget {
@@ -14,7 +14,7 @@ class _CalculatorScreenState extends State<CalculatorScreen> {
   final TextEditingController secondNumberController = TextEditingController();
   final TextEditingController resultController = TextEditingController();
 
-  late final PlatformExperiments? plugin;
+  late final CalculatorApi? plugin;
 
   @override
   void didChangeDependencies() {
@@ -77,17 +77,26 @@ class _CalculatorScreenState extends State<CalculatorScreen> {
     );
   }
 
-  Future<void> _do(Future<num?> Function(int, int)? operation) async {
+  Future<void> _do(
+    Future<IntegerOperationResult?> Function(Operands)? operation,
+  ) async {
     final first = int.parse(firstNumberController.text);
     final second = int.parse(secondNumberController.text);
-    final result = await operation?.call(first, second);
+    final result =
+        await operation?.call(Operands(first: first, second: second));
     if (result == null) return;
-    resultController.text = result.toString();
+    resultController.text = result.result.toString();
   }
 
   Future<void> _onMultiply() async => _do(plugin?.multiply);
 
-  Future<void> _onDivide() async => _do(plugin?.divide);
+  Future<void> _onDivide() async {
+    final first = int.parse(firstNumberController.text);
+    final second = int.parse(secondNumberController.text);
+    final result = await plugin?.divide(Operands(first: first, second: second));
+    if (result == null) return;
+    resultController.text = result.result.toString();
+  }
 
   Future<void> _onAdd() async => _do(plugin?.add);
 
