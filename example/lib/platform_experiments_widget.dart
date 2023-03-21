@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:platform_experiments/platform_experiments.dart';
+import 'package:platform_experiments/pigeon.dart';
 
 class PlatformExperimentsWidget extends InheritedWidget {
-  final PlatformExperiments platformPlugin;
+  final CalculatorApi platformPlugin;
 
   const PlatformExperimentsWidget({
     required this.platformPlugin,
